@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario Autorización</title>
+    <style>
+      body {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      canvas {
+        border: 1px solid #000;
+        touch-action: none;
+      }
+      label {
+        display: block;
+        margin-top: 12px;
+      }
+      .grupo {
+        border-top: 1px solid #ccc;
+        padding-top: 20px;
+        margin-top: 30px;
+      }
+      #encabezado {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+      <body>
+    <h2>Autorización para la publicación de imágenes</h2>
+
+    <p>
+      Con la inclusión de las nuevas tecnologías dentro de los medios didácticos
+      que tenemos al alcance y la posibilidad de que en estos puedan aparecer
+      imágenes vuestras o de vuestros hijos durante la realización de la
+      actividad, y dado que el derecho a la propia imagen está reconocido al
+      artículo 18. de la Constitución y regulado por la Ley 1/1982, de 5 de
+      mayo, sobre el derecho al honor, a la intimidad personal y familiar y a la
+      propia imagen y la Ley 3/2018, de 5 de Diciembre, sobre la Protección de
+      Datos de Carácter Personal y garantía de los derechos digitales.
+    </p>
+
+    <p>
+      La dirección de este centro pide el consentimiento a los alumnos y padres
+      o tutores legales en caso de ser menor de edad para poder publicar las
+      imágenes en las cuales aparezcan individualmente o en grupo que se puedan
+      realizar en el centro en las diferentes exhibiciones y actividades
+      realizadas por la escuela.
+    </p>
+
+    <form id="formulario">
+      
+      <div class="grupo">
+        <h3 id="encabezado">RELLENAR PARA ALUMNOS MAYORES DE EDAD</h3>
+        <label>
+          Yo Don/Doña
+          <input type="text" name="nombre_mayor" style="width: 300px" />, mayor
+          de edad, con DNI número
+          <input type="text" name="dni_mayor" style="width: 180px" />
+        </label>
+        <label>
+          <input type="radio" name="autoriza_mayor" value="sí" /> Sí autorizo
+        </label>
+        <label>
+          <input type="radio" name="autoriza_mayor" value="no" /> No autorizo
+        </label>
+      </div>
+
+      <div class="grupo">
+        <h3 id="encabezado">RELLENAR PARA ALUMNOS MENORES DE EDAD</h3>
+        <label>
+          Don/Doña
+          <input type="text" name="nombre_tutor" style="width: 300px" /> con DNI
+          <input type="text" name="dni_tutor" style="width: 150px" /> como
+          padre/madre o tutor del menor
+          <input type="text" name="nombre_menor" style="width: 300px" />
+        </label>
+      <label>
+        <input type="radio" name="autoriza_menor" value="sí" /> Sí autorizo
+        </label>
+        <label>
+          <input type="radio" name="autoriza_menor" value="no" /> No autorizo
+        </label>
+      </div>
+
+      <p>
+        A la Escuela de Artes Marciales Shuri-Te el uso de las imágenes realizadas en
+        actividades organizadas por el centro publicadas en:
+      </p>
+      <ul>
+        <li>La página web del centro y redes sociales.</li>
+        <li>Filmaciones destinadas a difusión para los familiares de la escuela.</li>
+      </ul>
+
+      <div class="grupo">
+        <p><strong>Firmado:</strong></p>
+        <canvas id="canvas" width="400" height="150"></canvas><br />
+        <button type="button" id="limpiar">Limpiar firma</button>
+        <p>
+          En Camas a
+          <input
+            type="text"
+            name="dia"
+            placeholder="día"
+            style="width: 50px"
+            required
+          />
+          de
+          <input
+            type="text"
+            name="mes"
+            placeholder="mes"
+            style="width: 150px"
+            required
+          />
+          de 20
+          <input
+            type="text"
+            name="año"
+            placeholder="año"
+            style="width: 50px"
+            required
+          />
+        </p>
+      </div>
+
+      <br />
+      <button type="submit">Enviar formulario</button>
+    </form>
+    
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      let dibujando = false;
+      
+      canvas.addEventListener("mousedown", (e) => {
+        dibujando = true;
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
+      });
+      
+      canvas.addEventListener("mouseup", () => {
+        dibujando = false;
+        ctx.beginPath();
+      });
+
+      canvas.addEventListener("mouseout", () => {
+        dibujando = false;
+        ctx.beginPath();
+      });
+
+      canvas.addEventListener("mousemove", (e) => {
+        if (!dibujando) return;
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+      });
+
+      document.getElementById("limpiar").addEventListener("click", () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      });
+
+      // Manejar envío del formulario
+      document.querySelector("form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const canvasDataURL = canvas.toDataURL("image/png");
+
+        // Crear el objeto con los datos del formulario
+        const datos = {
+          dia: e.target.dia.value,
+          mes: e.target.mes.value,
+          año: e.target.año.value,
+          nombre_mayor: e.target.nombre_mayor.value,
+          dni_mayor: e.target.dni_mayor.value,
+          autoriza_mayor: e.target.autoriza_mayor?.value,
+          nombre_tutor: e.target.nombre_tutor.value,
+          dni_tutor: e.target.dni_tutor.value,
+          nombre_menor: e.target.nombre_menor.value,
+          autoriza_menor: e.target.autoriza_menor?.value,
+          firma: canvasDataURL, // imagen en base64
+        };
+
+        try {
+          const respuesta = await fetch("http://localhost:3000/api/enviar", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(datos),
+          });
+
+          if (respuesta.ok) {
+            alert("Formulario enviado correctamente.");
+          } else {
+            alert("Error al enviar el formulario.");
+          }
+        } catch (error) {
+          console.error("Error de red:", error);
+          alert("Fallo de conexión al enviar.");
+        }
+      });
+    </script>
+  </body>
+</html>
