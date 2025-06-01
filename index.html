@@ -1,207 +1,264 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formulario Autorización</title>
-    <style>
-      body {
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        max-width: 700px;
-        margin: 40px auto;
-        padding: 20px;
-        line-height: 1.6;
-      }
-      canvas {
-        border: 1px solid #000;
-        touch-action: none;
-      }
-      label {
-        display: block;
-        margin-top: 12px;
-      }
-      .grupo {
-        border-top: 1px solid #ccc;
-        padding-top: 20px;
-        margin-top: 30px;
-      }
-      #encabezado {
-        text-decoration: underline;
-      }
-    </style>
-  </head>
-  <body>
-      <body>
-    <h2>Autorización para la publicación de imágenes</h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscripción Mayores de Edad</title>
+  <style>
+    body {
+      font-family: Calibri, sans-serif;
+      background-color: #6e6e6e; /* gris medio como el del PDF */
+      color: #fff;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      line-height: 1.6;
+      border: 5px solid #333; /* marco oscuro como en el PDF */
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+    }
+    canvas {
+      border: 1px solid #000;
+      margin-top: 10px;
+      touch-action: none;
+      background-color: #fff; /* contraste para la firma */
+    }
+    h2, h3, h4 {
+      text-align: center;
+      color: #fff;
+    }
+    .seccion {
+      border-top: 1px solid #aaa;
+      padding-top: 20px;
+      margin-top: 30px;
+    }
+    .contrato p {
+      margin-bottom: 10px;
+    }
+    .firma-fecha {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin-top: 20px;
+    }
+    .fecha-inputs {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+      background-color: #444;
+      padding: 10px;
+    }
+    .logo img {
+      max-width: 100%;
+      height: auto;
+    }
+    input, textarea, select, button {
+      font-family: inherit;
+      font-size: 1em;
+    }
+    input[type="text"], input[type="email"] {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+   <div class="logo">
+    <img src="LogoKarate.PNG" alt="Logo Karate Shuri-Te" />
+  </div>
+  <h2>TEMPORADA 2025/26</h2>
+  <h3>Inscripción para Mayores de Edad</h3>
 
-    <p>
-      Con la inclusión de las nuevas tecnologías dentro de los medios didácticos
-      que tenemos al alcance y la posibilidad de que en estos puedan aparecer
-      imágenes vuestras o de vuestros hijos durante la realización de la
-      actividad, y dado que el derecho a la propia imagen está reconocido al
-      artículo 18. de la Constitución y regulado por la Ley 1/1982, de 5 de
-      mayo, sobre el derecho al honor, a la intimidad personal y familiar y a la
-      propia imagen y la Ley 3/2018, de 5 de Diciembre, sobre la Protección de
-      Datos de Carácter Personal y garantía de los derechos digitales.
-    </p>
+  <form id="formulario">
+    <div class="seccion">
+      <h4>DATOS DEL SOLICITANTE (Alumno/a)</h4>
+      <label>Nombre y apellidos: <input type="text" name="nombre" required></label>
+      <label>DNI: <input type="text" name="dni" required></label>
+      <label>Fecha de nacimiento: <input type="text" name="fecha_nacimiento" required></label>
+      <label>Domicilio: <input type="text" name="domicilio" required></label>
+      <label>Teléfono móvil: <input type="text" name="telefono" required></label>
+      <label>Correo electrónico Gmail: <input type="email" name="email" required></label>
+      <label>Lesiones: <input type="text" name="lesiones"></label>
+      <label>Enfermedades: <input type="text" name="enfermedades"></label>
+      <label>Otros: <input type="text" name="otros"></label>
+    </div>
 
-    <p>
-      La dirección de este centro pide el consentimiento a los alumnos y padres
-      o tutores legales en caso de ser menor de edad para poder publicar las
-      imágenes en las cuales aparezcan individualmente o en grupo que se puedan
-      realizar en el centro en las diferentes exhibiciones y actividades
-      realizadas por la escuela.
-    </p>
-
-    <form id="formulario">
-      
-      <div class="grupo">
-        <h3 id="encabezado">RELLENAR PARA ALUMNOS MAYORES DE EDAD</h3>
-        <label>
-          Yo Don/Doña
-          <input type="text" name="nombre_mayor" style="width: 300px" />, mayor
-          de edad, con DNI número
-          <input type="text" name="dni_mayor" style="width: 180px" />
-        </label>
-        <label>
-          <input type="radio" name="autoriza_mayor" value="sí" /> Sí autorizo
-        </label>
-        <label>
-          <input type="radio" name="autoriza_mayor" value="no" /> No autorizo
-        </label>
-      </div>
-
-      <div class="grupo">
-        <h3 id="encabezado">RELLENAR PARA ALUMNOS MENORES DE EDAD</h3>
-        <label>
-          Don/Doña
-          <input type="text" name="nombre_tutor" style="width: 300px" /> con DNI
-          <input type="text" name="dni_tutor" style="width: 150px" /> como
-          padre/madre o tutor del menor
-          <input type="text" name="nombre_menor" style="width: 300px" />
-        </label>
-      <label>
-        <input type="radio" name="autoriza_menor" value="sí" /> Sí autorizo
-        </label>
-        <label>
-          <input type="radio" name="autoriza_menor" value="no" /> No autorizo
-        </label>
-      </div>
-
-      <p>
-        A la Escuela de Artes Marciales Shuri-Te el uso de las imágenes realizadas en
-        actividades organizadas por el centro publicadas en:
+    <div class="seccion contrato">
+      <h4>CLÁUSULAS DEL CONTRATO</h4>
+      <p><strong>Primera.</strong> Que es deseo de ambas partes firmar el presente acuerdo.</p>
+      <p><strong>Segunda.</strong> Que conoce los fines y las directrices de SHURI-TE y está de acuerdo con ellos y con los medios utilizados para llevar la actividad de Karate.</p>
+      <p><strong>Tercera.</strong> Que se compromete a realizarla con responsabilidad y regularidad; avisando a SHURI-TE con la antelación suficiente en el caso de que surgiera alguna dificultad imprevista, a fin de poder ser reemplazado por otro/otra persona y poder utilizar su plaza.</p>
+      <p><strong>Cuarta.</strong> Que podrá cesar la actividad de la misma cuando lo desee, debiendo en este caso ponerlo en conocimiento de SHURI-TE con la antelación suficiente (1 mes), debiendo satisfacer todas las cuotas pendientes hasta la comunicación del cese.</p>
+      <p><strong>Quinta.</strong> Que igualmente, acepta que, en el supuesto de que sus servicios no sean satisfactorios, esta podrá prescindir de los mismos, notificándolo razonadamente y con el visto bueno de SHURI-TE, este extremo lo deberá notificar con la suficiente antelación (1 mes).</p>
+      <p><strong>Sexta.</strong> 
+        1. Que el curso inicia el día 15 del mes de septiembre de 2025 y finaliza el día 24 del mes de junio de 2026.<br>
+        2. Las clases se impartirán ajustándose al calendario escolar, no impartiéndose en días no lectivos, festivos y puentes.<br>
+        3. No se impartirán clases en fechas señaladas tales como 24 ó 31 de diciembre, 5 enero ni días de escasa participación de alumnado, tales como feria de Camas o de Sevilla.
       </p>
-      <ul>
-        <li>La página web del centro y redes sociales.</li>
-        <li>Filmaciones destinadas a difusión para los familiares de la escuela.</li>
-      </ul>
+      <p><strong>Séptima.</strong>
+        1. Los métodos de entrenamiento serán PRESENCIALES, cumpliendo los protocolos de seguridad e higiene que se marquen a la fecha.<br>
+        2. En caso necesario, los entrenamientos se realizarán AL AIRE LIBRE.<br>
+        3. Se realizarán en grupos estancos, con aforo limitado y en modalidad DEPORTE FEDERADO, siendo obligatoria la federación de todos los alumnos.
+      </p>
+      <p><strong>Octava.</strong> Existirán los siguientes uniformes: OFICIAL SHURI-TE (chaqueta, pantalón y cinturón), UNIFORME DE VERANO (pantalón de karategi, polo oficial y cinturón). Solo se permite el material facilitado por SHURI-TE.</p>
+      <p><strong>Novena.</strong> Derechos del alumno:
+        <ul>
+          <li>Recibir información, formación y apoyo para comprender la disciplina.</li>
+          <li>Participar activamente respetando libertad, dignidad y creencias.</li>
+          <li>Ser asegurado contra riesgos de accidente y responsabilidad civil.</li>
+          <li>Realizar la actividad en condiciones seguras.</li>
+        </ul>
+      </p>
+      <p><strong>Décima.</strong>
+        1. Esta inscripción es válida solo para el solicitante.
+        2. No se reembolsarán abonos sin confirmación de asistencia.
+        3. Reinscripción solo si hay plazas libres y con nuevo abono.
+      </p>
+      <p><strong>Undécima.</strong> Obligaciones del socio:
+        <ul>
+          <li>Abonar regularmente las cuotas.</li>
+          <li>Cumplir normas y compromisos adquiridos.</li>
+          <li>Guardar confidencialidad y actuar con responsabilidad.</li>
+          <li>Comunicar otras actividades deportivas.</li>
+          <li>Devolver uniformes con imagen registrada si desea deshacerse de ellos.</li>
+        </ul>
+      </p>
+      <p><strong>Duodécima.</strong> Prohibida la grabación, reproducción o publicación del contenido del curso sin autorización.</p>
+    </div>
 
-      <div class="grupo">
-        <p><strong>Firmado:</strong></p>
-        <canvas id="canvas" width="400" height="150"></canvas><br />
-        <button type="button" id="limpiar">Limpiar firma</button>
-        <p>
-          En Camas a
-          <input
-            type="text"
-            name="dia"
-            placeholder="día"
-            style="width: 50px"
-            required
-          />
-          de
-          <input
-            type="text"
-            name="mes"
-            placeholder="mes"
-            style="width: 150px"
-            required
-          />
-          de 20
-          <input
-            type="text"
-            name="año"
-            placeholder="año"
-            style="width: 50px"
-            required
-          />
-        </p>
-      </div>
-
-      <br />
-      <button type="submit">Enviar formulario</button>
-    </form>
+    <div class="seccion">
+      <h4>Autorización para la publicación de imágenes de los alumnos de la Escuela de Artes Marciales Shuri-te.</h4>
+      <p>
+        Con la inclusión de las nuevas tecnologías dentro de los medios didácticos que tenemos al alcance y la posibilidad de que en estos puedan aparecer imágenes vuestras o de vuestros hijos durante la realización de la actividad, y dado que el derecho a la propia imagen está reconocido al artículo 18. de la Constitución y regulado por la Ley 1/1982, de 5 de mayo, sobre el derecho al honor, a la intimidad personal y familiar y a la propia imagen y Ley Orgánica 7/2021, de 26 de mayo, sobre la Protección de Datos de Carácter Personal y garantía de los derechos digitales.
+      </p>
+      <p>
+        La dirección de este centro pide el consentimiento a los alumnos y padres o tutores legales en caso de ser menor de edad para poder publicar las imágenes en las cuales aparezcan individualmente o en grupo que se puedan realizar en el centro en las diferentes exhibiciones y actividades realizadas por la escuela.
+      </p>
+      <label><input type="radio" name="autoriza" value="sí" required> Sí autorizo</label>
+      <label><input type="radio" name="autoriza" value="no"> No autorizo</label>
+    </div>
     
-    <script>
-      const canvas = document.getElementById("canvas");
-      const ctx = canvas.getContext("2d");
-      let dibujando = false;
-      
-      canvas.addEventListener("mousedown", (e) => {
-        dibujando = true;
-        ctx.beginPath();
-        ctx.moveTo(e.offsetX, e.offsetY);
-      });
-      
-      canvas.addEventListener("mouseup", () => {
-        dibujando = false;
-        ctx.beginPath();
-      });
+    <p>
+      a la Escuela de Artes Marciales Shuri-Te el uso de las imágenes realizadas en actividades organizadas por el centro publicadas en:
+    </p>
+    <ul>
+      <li>La página web del centro y redes sociales.</li>
+      <li>Filmaciones destinadas a difusión para familiares de la escuela.</li>
+    </ul>
 
-      canvas.addEventListener("mouseout", () => {
-        dibujando = false;
-        ctx.beginPath();
-      });
+    <div class="seccion">
+      <h4 style="text-align: center;">Fecha y firma</h4>
+      <div class="firma-fecha">
+        <div class="firma-container">
+          <div>
+            <p><strong>Firma del alumno/a:</strong></p>
+            <canvas id="canvas" width="400" height="150"></canvas><br />
+            <button type="button" id="limpiar">Limpiar firma</button>
+          </div>
+        </div>
+        <div class="fecha-inputs">
+          <label>
+            En Camas, a<br>
+            <input type="text" name="dia" placeholder="día" style="width: 50px" required>
+            de
+            <input type="text" name="mes" placeholder="mes" style="width: 100px" required>
+            de 20
+            <input type="text" name="año" placeholder="año" style="width: 50px" required>
+          </label>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <button type="submit">Enviar</button>
+  </form>
 
-      canvas.addEventListener("mousemove", (e) => {
-        if (!dibujando) return;
-        ctx.lineTo(e.offsetX, e.offsetY);
-        ctx.stroke();
-      });
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    let dibujando = false;
 
-      document.getElementById("limpiar").addEventListener("click", () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-      });
+    canvas.addEventListener("mousedown", (e) => {
+      dibujando = true;
+      ctx.beginPath();
+      ctx.moveTo(e.offsetX, e.offsetY);
+    });
+    canvas.addEventListener("mouseup", () => {
+      dibujando = false;
+    });
+    canvas.addEventListener("mousemove", (e) => {
+      if (!dibujando) return;
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.stroke();
+    });
 
-      // Manejar envío del formulario
-      document.querySelector("form").addEventListener("submit", async (e) => {
-        e.preventDefault();
+     // Versión para táctil
+  canvas.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    dibujando = true;
+    const rect = canvas.getBoundingClientRect();
+    const touch = e.touches[0];
+    ctx.beginPath();
+    ctx.moveTo(touch.clientX - rect.left, touch.clientY - rect.top);
+  });
 
-        const canvasDataURL = canvas.toDataURL("image/png");
+  canvas.addEventListener("touchend", () => {
+    dibujando = false;
+  });
 
-        // Crear el objeto con los datos del formulario
-        const datos = {
-          dia: e.target.dia.value,
-          mes: e.target.mes.value,
-          año: e.target.año.value,
-          nombre_mayor: e.target.nombre_mayor.value,
-          dni_mayor: e.target.dni_mayor.value,
-          autoriza_mayor: e.target.autoriza_mayor?.value,
-          nombre_tutor: e.target.nombre_tutor.value,
-          dni_tutor: e.target.dni_tutor.value,
-          nombre_menor: e.target.nombre_menor.value,
-          autoriza_menor: e.target.autoriza_menor?.value,
-          firma: canvasDataURL, // imagen en base64
-        };
+  canvas.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+    if (!dibujando) return;
+    const rect = canvas.getBoundingClientRect();
+    const touch = e.touches[0];
+    ctx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
+    ctx.stroke();
+  });
+    document.getElementById("limpiar").addEventListener("click", () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
 
-        try {
-          const respuesta = await fetch("http://https://backend-anta1987s-projects.vercel.app//api/enviar", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(datos),
-          });
+    document.getElementById("formulario").addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-          if (respuesta.ok) {
-            alert("Formulario enviado correctamente.");
-          } else {
-            alert("Error al enviar el formulario.");
-          }
-        } catch (error) {
-          console.error("Error de red:", error);
-          alert("Fallo de conexión al enviar.");
+      const datos = Object.fromEntries(new FormData(e.target));
+      datos.firma = canvas.toDataURL("image/png");
+
+      try {
+        const res = await fetch("http://localhost:3000/api/enviar", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(datos),
+        });
+
+        if (res.ok) {
+          alert("Formulario enviado correctamente.");
+        } else {
+          alert("Error al enviar el formulario.");
         }
-      });
-    </script>
-  </body>
+      } catch (err) {
+        alert("Error de conexión.");
+        console.error(err);
+      }
+    });
+  </script>
+</body>
 </html>
