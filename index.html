@@ -8,7 +8,7 @@
     body {
       font-family: Calibri, sans-serif;
       background-color: #6e6e6e; /* gris medio como el del PDF */
-      color: #fff;
+      color: #fff; /* negro para el texto como en el PDF */
       max-width: 800px;
       margin: 40px auto;
       padding: 20px;
@@ -37,12 +37,13 @@
     .contrato p {
       margin-bottom: 10px;
     }
-    .firma-fecha {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      margin-top: 20px;
+    .seccion-firma-fecha {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
     }
     .fecha-inputs {
       display: flex;
@@ -79,6 +80,7 @@
     button:hover {
       background-color: #000;
     }
+
   </style>
 </head>
 <body>
@@ -165,28 +167,26 @@
       <li>Filmaciones destinadas a difusión para familiares de la escuela.</li>
     </ul>
 
-    <div class="seccion">
-      <h4 style="text-align: center;">Fecha y firma</h4>
-      <div class="firma-fecha">
-        <div class="firma-container">
-          <div>
-            <p><strong>Firma del alumno/a:</strong></p>
-            <canvas id="canvas" width="400" height="150"></canvas><br />
-            <button type="button" id="limpiar">Limpiar firma</button>
-          </div>
-        </div>
-        <div class="fecha-inputs">
-          <label>
-            En Camas, a<br>
-            <input type="text" name="dia" placeholder="día" style="width: 50px" required>
-            de
-            <input type="text" name="mes" placeholder="mes" style="width: 100px" required>
-            de 20
-            <input type="text" name="año" placeholder="año" style="width: 50px" required>
-          </label>
-        </div>
-      </div>
-    </div>
+<div class="seccion-firma-fecha">
+  <h4>Fecha y firma</h4>
+
+  <div class="firma-container">
+    <p><strong>Firma del alumno/a:</strong></p>
+    <canvas id="canvas" width="400" height="150"></canvas><br />
+    <button type="button" id="limpiar">Limpiar firma</button>
+  </div>
+
+  <div class="fecha-inputs">
+    <label>
+      En Camas, a<br>
+      <input type="text" name="dia" placeholder="día" style="width: 50px" required>
+      de
+      <input type="text" name="mes" placeholder="mes" style="width: 100px" required>
+      de 20
+      <input type="text" name="año" placeholder="año" style="width: 50px" required>
+    </label>
+  </div>
+</div>
     <br><br>
     <button type="submit">Enviar</button>
   </form>
